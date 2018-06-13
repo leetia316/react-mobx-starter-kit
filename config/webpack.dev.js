@@ -11,7 +11,7 @@ module.exports = merge(baseConfig, {
     main: [
       'react-hot-loader/patch',
       'webpack-hot-middleware/client?reload=true',
-      './index'
+      './test'
     ],
   },
   output: {
