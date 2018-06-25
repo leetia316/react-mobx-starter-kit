@@ -1,6 +1,7 @@
+/* eslint-disable no-console */
 import { observable, toJS, computed } from 'mobx'
 import { StoreHelper } from './store-helper'
-import type { ErrorType, CResponse } from '@utils'
+import type { ErrorType } from '@utils'
 
 export class WebAPIStore extends StoreHelper {
   fetchData: Function
@@ -14,11 +15,7 @@ export class WebAPIStore extends StoreHelper {
     this.logMessage("%cpending  ", "color:blue", actionName)
   }
 
-  setFulfilledState(response: CResponse | Object, actionName) {
-    const newState = do {
-      if (response instanceof window.Response) response.data
-      else response
-    }
+  setFulfilledState(newState, actionName) {
     Object.assign(this, {
       isFetching: false,
       isRejected: false,
